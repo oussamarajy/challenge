@@ -312,29 +312,5 @@ class ProductController extends Controller
 
 
 
-public function SortByPrice(){
-    try{
-       
-        $products = Product::select('products.*')->
-        join('product_categories', 'products.id', 'product_categories.product_id')
-        ->where('product_categories.category_id', $request->selectedCategory)->paginate(5);
 
-        return response()->json([
-            "products" => $products,
-            "status" => 200
-        ]);
-
-
-    }
-
-
-
-catch(\Throwable $ex){
-    return response()->json([
-        "message" => $ex->getMessage()
-
-    ]);
-
-}
-}
 }
